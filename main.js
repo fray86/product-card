@@ -34,7 +34,7 @@ function openGoogle() {
   }
 }
 
-// Вывод косоль лог
+// Вывод консоль лог
 
 const outputConsoleBtn = document.querySelector("#output-console-log");
 
