@@ -3,7 +3,7 @@
 function showWeatherInfo(city, temperature) {
   console.log(`Сейчас в ${city} температура ${temperature} градусов по Цельсию`);
 }
-weatherInfo("Нефтеюганске", -10);
+showWeatherInfo("Нефтеюганске", -10);
 
 // Функция проверки скорости звука
 
