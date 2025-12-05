@@ -109,7 +109,7 @@ const allLibrarylist = [...libraryLifeAdvice, ...libraryLifeHacks];
 //10.Почитать про метод массива — map. Написать функцию, которая принимает массив сущностей с задания №9
 
 const checkRareBooks = allLibrarylist.map(book => ({
-  ...book,isRare: book.year >= 2000
+  ...book, isRare: book.year >= 2000
 }))
 
 console.log(checkRareBooks);
