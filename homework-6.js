@@ -23,20 +23,18 @@ const car = {
 
 car.owner = profile
 
-//5.Написать функцию которая аргументом будет принимать объект
+//5.Написать функцию которая аргументом будет принимать объект (obj более абстрактно. можно car?)
 
-function checkProperty(carInfo) {
-  if (!carInfo.maxSpeed) {
-   carInfo.maxSpeed = 300;
+function checkProperty(obj) {
+  if (!obj.maxSpeed) {
+   obj.maxSpeed = 300;
  }
 }
 
 checkProperty(car);
 console.log(car);
 
-
 //6.Написать функцию, которая получает первым аргументом  — объект, а вторым аргументом — свойство объекта, которое нужно вывести и выводит его значение.
-
 
 function showObjProperty(obj, prop) {
   console.log(obj[prop])
@@ -63,7 +61,8 @@ const libraryLifeAdvice = [
    colorCover: "green",
    genre: "triller",
   },
-  {bookName: "Как не стеснятся в бане?",
+  {
+   bookName: "Как не стеснятся в бане?(Ждать разбана)",
    autor: "Ivan Cikalo",
    year: 1992,
    colorCover: "blue",
@@ -79,30 +78,29 @@ libraryLifeAdvice.push({
   genre: "detective",
 });
 
-
 //9.Создать еще один массив, состоящих из тех же книг, но относящийся к определенной вселенной 
 
 const libraryLifeHacks = [
-  {
-  bookName: "Как понять цели в жизни, после 60?",
-  autor: "Victor Francenshtein",
-  year: 2022,
-  colorCover: "white",
-  genre: "comedy",
+ {
+   bookName: "Как понять цели в жизни, после 60?",
+   autor: "Victor Francenshtein",
+   year: 2022,
+   colorCover: "white",
+   genre: "comedy",
   },
   {
-  bookName: "Как научиться целовать на помидоре?",
-  autor: "Ragnar Lodbrok",
-  year: 2012,
-  colorCover: "purple",
-  genre: "fantasy",
+   bookName: "Как научиться целовать на помидоре?",
+   autor: "Ragnar Lodbrok",
+   year: 2012,
+   colorCover: "purple",
+   genre: "fantasy",
   },
   {
-  bookName: "Как не смотреть на карликов с высока?",
-  autor: "Taivin Lannister",
-  year: 1234,
-  colorCover: "yellow",
-  genre: "biography",
+   bookName: "Как не смотреть на карликов с высока?",
+   autor: "Taivin Lannister",
+   year: 1234,
+   colorCover: "yellow",
+   genre: "biography",
   }
 ];
 
@@ -111,7 +109,7 @@ const allLibrarylist = [...libraryLifeAdvice, ...libraryLifeHacks];
 //10.Почитать про метод массива — map. Написать функцию, которая принимает массив сущностей с задания №9
 
 const checkRareBooks = allLibrarylist.map(book => ({
-  ...book,isRare: book.year >=2000
+  ...book,isRare: book.year >= 2000
 }))
 
 console.log(checkRareBooks);
