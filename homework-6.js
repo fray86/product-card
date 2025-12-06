@@ -25,9 +25,9 @@ car.owner = profile
 
 //5.Написать функцию которая аргументом будет принимать объект (obj более абстрактно. можно car?)
 
-function checkProperty(obj) {
-  if (!obj.maxSpeed) {
-   obj.maxSpeed = 300;
+function setDefaultCarMaxSpeed(car) {
+  if (!car.maxSpeed) {
+   car.maxSpeed = 300;
  }
 }
 
