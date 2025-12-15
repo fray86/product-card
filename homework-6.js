@@ -31,7 +31,7 @@ function setDefaultCarMaxSpeed(car) {
  }
 }
 
-checkProperty(car);
+setDefaultCarMaxSpeed(car);
 console.log(car);
 
 //6.Написать функцию, которая получает первым аргументом  — объект, а вторым аргументом — свойство объекта, которое нужно вывести и выводит его значение.
