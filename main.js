@@ -1,6 +1,6 @@
 // Покраска всех карточек
 
-const productCards = document.querySelectorAll(".card-container");
+const productCards = document.querySelectorAll(".product-container");
 const changeProductCardsColorButton = document.querySelector(".change-all-color-card");
 const redColorHash = "#FF0000";
 
@@ -10,7 +10,7 @@ changeProductCardsColorButton.addEventListener("click", () => {
 
 // Покраска одной карточки
 
-const firstProductCard = document.querySelector(".card-container");
+const firstProductCard = document.querySelector(".product-container");
 const changeProductCardColorButton = document.querySelector(".change-color-card");
 const pinkColorHash = "#FFC0CB";
 
