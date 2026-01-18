@@ -20,7 +20,7 @@ function renderProductCards(cards) {
 
 //Реализовать функцию, которая при старте страницы выводит сообщение (через функцию prompt) "Сколько карточек отобразить? От 1 до 5"
 
-function getProductCardsAmount() {
+function getSelectedCards() {
   const input = prompt("Сколько карточек отобразить? От 1 до 5");
   const count = Number(input);
 
@@ -33,8 +33,8 @@ function getProductCardsAmount() {
   }
 }
 
-const selected = getProductCardsAmount();
-renderProductCards(selected);
+const selectedCards = getSelectedCards();
+renderProductCards(selectedCards);
 
 //Используя метод .reduce(), получить массив объектов, где ключем является название продукта, а значением - его описание
 
