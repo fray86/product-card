@@ -68,5 +68,6 @@ regForm.addEventListener('submit', function(event) {
   console.log('Пользователь:', user);
   alert('Регистрация успешна');
   regForm.reset();
+  closeModal();
 });
 
