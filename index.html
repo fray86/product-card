@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="footer.css"/>
 </head>
 <body>
     <h1 class="main-title">Выбери свой продукт</h1>
@@ -33,10 +34,73 @@
         </li>
       </template>
     </ul>
+    <footer class="footer">
+      <div class="footer-main">
+      <div class="footer-about">
+        <h3 class="footer-title">Product Cards</h3>
+        <p class="footer-subtitle">У Нас Самые Лучшие Продукты Для Кожи!</p>
+        <nav class="social-links">
+         <a href=""><img src="/images/tg-link.png" alt="tg"></a>
+          <a href=""><img src="/images/vk-link.png" alt="vk"></a>
+        </nav>
+      </div>
+     <div class="footer-subscribe">
+      <h3 class="subscribe-title">Подпишись на наши акции:</h3>
+      <form class="email-form" action="">
+        <input required type="email" name="email" id="footer-sub" placeholder="Введи Email...">
+        <button type="submit" class="sub-btn">Подписаться</button>
+      </form>
+     </div>
+     <div class="footer-navigation">
+      <h4 class="navigation-title">Быстрые ссылки</h4>
+      <nav>
+        <ul class="nav-container">
+          <li>
+            <a class="footer-nav-item" href="#">Главная</a>
+          </li>
+          <li>
+             <a class="footer-nav-item" href="#">Магазин</a>
+          </li>
+          <li>
+            <a class="footer-nav-item" href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+     </div>
+     </div>
+     <div>
+      <button class="open-modal-btn">Регистрация</button>
+     </div>
+     <div class="copyright-container">
+      <hr class="footer-copyright-line">
+      <p class="footer-copyright">www.product-cards.com©all right reserve</p>
+     </div>
+    </footer>
+    <div class="overlay"></div>
+    <div class="modal">
+      <form id="reg-form">
+        <button class="modal-close-btn" type="button">&#10062</button>
+        <label class="modal-form-label" for="surname-input">Введите вашу фамилию</label>
+        <input class="modal-form-field" name="user-surname" id="surname-input" type="text" required placeholder="Максимов">
+        <label class="modal-form-label" for="name-input">Введите ваше имя</label>
+        <input class="modal-form-field" name="user-name" id="name-input" type="text" required placeholder="Максим">
+        <label class="modal-form-label" for="date-input">Введите дату рождения</label>
+        <input class="modal-form-field" name="register-date" id="date-input" type="date" required>
+        <label class="modal-form-label" for="login-input">Введите логин</label>
+        <input class="modal-form-field" name="login" id="login-input" type="text" required placeholder="Логин">
+        <label class="modal-form-label" for="password-input">Введите пароль</label>
+        <input class="modal-form-field" name="password" id="password-input" type="password" required minlength="8">
+        <label class="modal-form-label" for="check-password-input">Введите пароль повторно</label>
+        <input class="modal-form-field" name="check-password" id="check-password-input" type="password" required minlength="8">
+        <span class="error-password"></span>
+        <button class="modal-reg-btn" type="submit">Регистрировать</button>
+      </form>
+    </div>
     <script src="main.js"></script>
     <script src="homework-5.js"></script>
     <script src="homework-6.js"></script>
     <script type="module" src="homework-7.js"></script>
     <script type="module" src="homework-8.js"></script>
+    <script type="module" src="homework-9.js"></script>
 </body>
 </html>
