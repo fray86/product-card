@@ -1,61 +1,58 @@
-// Покраска всех карточек
+import "./homework-5.js";
+import "./homework-6.js";
+import "./homework-7.js";
+import "./homework-8.js";
+import "./homework-9.js";
+import "./homework-4.js";
+import { Eat } from "./products.js";
+import { Form } from "./form.js";
+import { Modal } from "./modal.js";
 
-const productCards = document.querySelectorAll(".product-container");
-const changeProductCardsColorButton = document.querySelector(".change-all-color-card");
-const redColorHash = "#FF0000";
+//3.Вывоз наследника класса Product
 
-changeProductCardsColorButton.addEventListener("click", () => {
-  productCards.forEach((card) => (card.style.backgroundColor = redColorHash));
+const burger = new Eat("Large", 500, "Fastfood");
+burger.showValue();
+
+//4. Работа с модалкой
+
+const regModal = new Modal(".modal");
+const regBtn = document.querySelector(".open-modal-btn");
+
+regBtn.addEventListener("click", () => regModal.openModal());
+
+//5. Работа с формой регистарции
+
+let user = {};
+const regForm = new Form("reg-form");
+
+regForm.form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const isFormValid = regForm.checkValidity();
+  const isPasswordCorrect = regForm.checkValues("password","check-password",".error-password",);
+
+  if (isFormValid && isPasswordCorrect) {
+    user = regForm.getValues()
+    user.registrationDate = new Date();
+    console.log("Пользователь:", user);
+    alert("Регистрация успешна");
+    regForm.reset();
+    regModal.closeModal();
+  }
 });
 
-// Покраска одной карточки
+//5. Работа с формой почты
 
-const firstProductCard = document.querySelector(".product-container");
-const changeProductCardColorButton = document.querySelector(".change-color-card");
-const pinkColorHash = "#FFC0CB";
+const emailForm = new Form('email-form');
 
-changeProductCardColorButton.addEventListener("click", () => {
-  firstProductCard.style.backgroundColor = pinkColorHash;
-});
+emailForm.form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-// Кнопка перехода на другую страницу
-
-const openGoogleBtn = document.querySelector("#open-google-page");
-const urlGoogle = "http://google.com";
-
-openGoogleBtn.addEventListener("click", openGoogle);
-
-function openGoogle() {
-  const answer = confirm("Вы действительно хотите открыть Google?");
-  if (answer === true) {
-    window.open(urlGoogle);
-  } else {
+  if (!emailForm.checkValidity()) {
     return;
   }
-}
 
-// Вывод консоль лог
-
-const outputConsoleBtn = document.querySelector("#output-console-log");
-
-outputConsoleBtn.addEventListener("click", () => outputConsoleLog("ДЗ №4"));
-function outputConsoleLog(message) {
-  alert(message);
-  console.log(message);
-}
-
-// Вывод заголовка в консоль
-
-const mainTitle = document.querySelector(".main-title");
-
-mainTitle.addEventListener("mouseenter", () => {
-  console.log(mainTitle.textContent);
-});
-
-//Кнопка смены цвета с одного на другой
-
-const switchColorBtn = document.querySelector("#switch-color-btn");
-
-switchColorBtn.addEventListener("click", () => {
-  switchColorBtn.classList.toggle("bg_blue");
+ const data = emailForm.getValues();
+  console.log({ email: data.email });
+  emailForm.reset();
 });
