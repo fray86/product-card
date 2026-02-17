@@ -11,7 +11,8 @@ export class Modal {
     this.overlay = document.querySelector(".overlay");
 
     if (this.modal) {
-      this.closeListner();
+      this.closeBtn = this.modal.querySelector(".modal-close-btn");
+      this.addEventListeners();
     }
   }
 
@@ -32,10 +33,8 @@ export class Modal {
     return this.modal.classList.contains("modal-showed");
   }
 
-  closeListner() {
-    this.closeBtn = this.modal.querySelector(".modal-close-btn");
-    if (this.closeBtn) {
-      this.closeBtn.addEventListener("click", () => this.closeModal());
-    }
+  addEventListeners() {
+      this.closeBtn?.addEventListener("click", () => this.closeModal());
+      this.overlay?.addEventListener('click', () => this.closeModal());    
   }
 }

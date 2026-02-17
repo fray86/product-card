@@ -10,12 +10,3 @@ export class Product {
   }
 }
 
-export class Eat extends Product {
-  constructor(size, price, eatType) {
-  super(size, price)
-  this.eatType = eatType;
-  }
-  showValue() {
-    console.log(`This product has: ${this.size}, ${this.price} and type: ${this.eatType}`);
-  }
-}

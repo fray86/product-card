@@ -15,31 +15,12 @@ export class Form {
     return Object.fromEntries(formData.entries());
   }
 
-  checkValidity() {
-    return this.form.reportValidity()
-  }
-
-  checkValues(passwordInput, passwordConfirm, errorSelector) {
-    const values = this.getValues();
-    const pass = values[passwordInput];
-    const confPass = values[passwordConfirm];
-    const errorSpan = document.querySelector(errorSelector);
-
-    if (pass !== confPass) {
-    errorSpan.textContent = 'Пароли не совпадают';
-    errorSpan.style.color = 'red';
-    return false
-    }
-
-    errorSpan.textContent = '';
-    return true
+  isValid() {
+    return this.form?.reportValidity()
   }
 
   reset() {
-    if (this.form) {
-      this.form.reset();
-    }
+      this.form?.reset();
   }
 }
-
 
