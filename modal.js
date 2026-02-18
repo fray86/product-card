@@ -12,7 +12,7 @@ export class Modal {
 
     if (this.modal) {
       this.closeBtn = this.modal.querySelector(".modal-close-btn");
-      this.addEventListeners();
+      this.setupCloseEvents();
     }
   }
 
@@ -33,7 +33,7 @@ export class Modal {
     return this.modal.classList.contains("modal-showed");
   }
 
-  addEventListeners() {
+  setupCloseEvents() {
       this.closeBtn?.addEventListener("click", () => this.closeModal());
       this.overlay?.addEventListener('click', () => this.closeModal());    
   }
