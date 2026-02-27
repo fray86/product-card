@@ -1,73 +1,53 @@
-// Задание 1.4 (Логика формы "Подписаться" в футере)
+import { Form } from "./form.js";
+import { Modal } from "./modal.js";
+import { RegForm } from "./reg-form.js";
+import { Food } from "./food.js";
 
-function getFormData(form) {
-  const formData = new FormData(form);
-  return Object.fromEntries(formData.entries());
-}
+//3.Вывоз наследника класса Product (относится к 10 заданию!)
 
-const emailForm = document.querySelector('.email-form');
-emailForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (!emailForm.checkValidity()) {
-    emailForm.reportValidity();
-    return;
-  }
-  const data = getFormData(emailForm);
-  console.log({ email: data.email });
+const burger = new Food("Large", 500, "Fastfood");
+burger.showValue();
 
-  emailForm.reset();
-});
+//4. Работа с модалкой
 
-//Задание 2.5 Создание модального окна. Закрытие оверлея/модалки 
+const regModal = new Modal(".modal");
+const regBtn = document.querySelector(".open-modal-btn");
 
-const regBtn = document.querySelector('.open-modal-btn');
-const overlay = document.querySelector('.overlay');
-const modal = document.querySelector('.modal');
-const closeModalBtn = document.querySelector('.modal-close-btn')
+regBtn.addEventListener("click", () => regModal.openModal());
 
-function openModal() {
-  modal.classList.add('modal-showed');
-  overlay.classList.add('modal-showed');
-};
-
-function closeModal() {
-  modal.classList.remove('modal-showed');
-  overlay.classList.remove('modal-showed');
-}
-
-regBtn.addEventListener('click', openModal);
-overlay.addEventListener('click', closeModal);
-closeModalBtn.addEventListener('click', closeModal);
-
-//Задание 2.6 Работа с формой регистрации нового пользователя.
+//5. Работа с формой регистарции
 
 let user = {};
+const regForm = new RegForm("reg-form");
 
-const passwordInput = document.querySelector('#password-input');
-const confirmPasswrod = document.querySelector('#check-password-input');
-const regForm = document.querySelector('#reg-form');
-const errorSpan = document.querySelector('.error-password');
-
-regForm.addEventListener('submit', function(event) {
+regForm.form.addEventListener("submit", function (event) {
   event.preventDefault();
-  errorSpan.textContent = '';
 
-  if (!regForm.checkValidity()) {
-    regForm.reportValidity();
-    return;
+  const isFormValid = regForm.isValid();
+  const isPasswordCorrect = regForm.checkValues("password","check-password",".error-password",);
+
+  if (isFormValid && isPasswordCorrect) {
+    user = regForm.getValues()
+    user.registrationDate = new Date();
+    console.log("Пользователь:", user);
+    alert("Регистрация успешна");
+    regForm.reset();
+    regModal.closeModal();
   }
-
-  if (passwordInput.value !== confirmPasswrod.value) {
-    errorSpan.textContent = 'Пароли не совпадают';
-    errorSpan.style.color = 'red';
-    return;
-  }
-
-  user = getFormData(regForm);
-  user.registrationDate = new Date();
-  console.log('Пользователь:', user);
-  alert('Регистрация успешна');
-  regForm.reset();
-  closeModal();
 });
 
+//5. Работа с формой почты
+
+const emailForm = new Form('email-form');
+
+emailForm.form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  if (!emailForm.isValid()) {
+    return;
+  }
+
+ const data = emailForm.getValues();
+  console.log({ email: data.email });
+  emailForm.reset();
+});
