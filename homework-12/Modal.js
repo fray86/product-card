@@ -17,6 +17,10 @@ export class Modal {
   close() {
     this.modal.classList.remove("modal-showed");
     this.overlay.classList.remove("overlay-showed");
+    this.#removeEventListeners();
+  }
+
+  #removeEventListeners() {
     this.closeButton.removeEventListener("click", this.handleCloseClick);
     if (this.shouldCloseOnOverlay) {
       this.overlay.removeEventListener("click", this.handleCloseClick);
