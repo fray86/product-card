@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"/>
+  <title>Users async</title>
+</head>
+<body>
+  <ul class="user-cards-list">
+      <div class="data-loaded-info">Данные загружаются</div>
+      <template class="user-template">
+        <li class="user-container">
+          <span id="user-span-text" class="username"></span>
+          <span id="user-span-text" class="surname"></span>
+          <span id="user-span-text" class="email"></span>
+          <span id="user-span-text" class="age"></span>
+          <button class="delete-user">Удалить</button>
+        </li>
+      </template>
+    </ul>
+    <div class="btn-controls">
+      <button class="delete-all-users">Удалить всех</button>
+      <button class="get-all-users">Получить всех</button>
+      </div>
+    <script type="module" src="async.js"></script>
+</body>
+</html>

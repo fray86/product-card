@@ -1,0 +1,78 @@
+.data-loaded-info {
+  display: block;
+}
+
+#user-span-text {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+.btn-controls {
+  display: none;
+}
+
+.btn-controls-showed {
+  display: block;
+}
+
+.data-loaded-info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:#b5f339;
+  font-family: arial;
+  font-size: 50px;
+}
+
+.user-cards-list {
+  display: flex;
+  list-style-type: none;
+  margin: auto;
+  justify-content: center;
+  gap: 45px;
+  position: relative;
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.user-container {
+  width: 200px;
+  height: 200px;
+  padding: 25px;
+  border: coral;
+  border-style: double;
+  background-color: #efdad0ce;
+  box-shadow: 2px 2px 10px 0px #1a192b1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-user {
+  display: block;
+  margin: 0 auto;
+  margin-top: auto;
+  border-radius: 6px;
+  background-color: rgb(226, 255, 3);
+  font-size: 16px;
+}
+
+.delete-all-users {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  background-color: rgb(244, 38, 6);
+  font-size: 16px;
+}
+
+.get-all-users {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  background-color: rgb(8, 252, 16);
+  font-size: 16px;
+}
