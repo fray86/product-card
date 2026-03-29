@@ -4,33 +4,33 @@ export class User {
     this.userTemplate = document.querySelector(userTemplate);
     this.users = [];
     this.#initEvents();
+    this.usersCount = 0;
   }
 
   async fetchUsers() {
-    const cachedUsers = localStorage.getItem("users");
-    if (cachedUsers) {
-      this.hideLodaing();
-      return JSON.parse(cachedUsers);
-    }
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await fetch("/async/users.json");
       const users = await response.json();
-      localStorage.setItem("users", JSON.stringify(users));
       return users ?? [];
     } catch (error) {
       alert("Данные не загрузились", error);
-      return [];
-    } finally {
-      this.hideLodaing();
+      throw error;
     }
   }
 
   async loadUsers() {
-    const FetchedUsers = await this.fetchUsers();
-    this.users = FetchedUsers;
+    const storageData = localStorage.getItem("users");
+    if (storageData) {
+      this.users = JSON.parse(storageData);
+    } else {
+      this.users = await this.fetchUsers();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      localStorage.setItem("users", JSON.stringify(this.users));
+    }
+    this.allUsersCount= this.users.length;
     this.renderUsersCards(this.users);
     this.loadControlUsersBtns();
+    this.hideLoader();
   }
 
   loadControlUsersBtns() {
@@ -38,33 +38,32 @@ export class User {
     controlBtns.classList.add("btn-controls-showed");
   }
 
-  hideLodaing() {
+  hideLoader() {
     const loadingSpan = document.querySelector(".data-loaded-info");
     loadingSpan?.remove();
   }
 
   renderUsersCards(cards) {
+    this.userList.replaceChildren();
     cards.forEach((user) => {
       const userFragment = this.userTemplate.content.cloneNode(true);
+      const deleteBtn = userFragment.querySelector(".delete-user");
+      const userCard = userFragment.querySelector(".user-container");
       userFragment.querySelector(".username").textContent = `Имя: ${user.name}`;
-      userFragment.querySelector(".surname").textContent = `Фамилия: ${user.surname}`;
+      userFragment.querySelector(".surname").textContent =`Фамилия: ${user.surname}`;
       userFragment.querySelector(".email").textContent = `Почта: ${user.email}`;
       userFragment.querySelector(".age").textContent = `Возраст: ${user.age}`;
-      userFragment.querySelector(".delete-user").dataset.id = user.id;
+      deleteBtn.addEventListener("click", () => {
+        const userId = Number(user.id);
+        this.deleteUser(userId, userCard);
+      });
       this.userList.appendChild(userFragment);
     });
   }
 
   #initEvents() {
-    this.userList.addEventListener("click", (event) => {
-      const isDeleteBtn = event.target.closest(".delete-user");
-      if (!isDeleteBtn) return;
-      const card = isDeleteBtn.closest(".user-container");
-      this.deleteUser(+isDeleteBtn.dataset.id, card);
-    });
-
-    const delAllBtn = document.querySelector(".delete-all-users");
-    delAllBtn.addEventListener("click", () => this.deleteAllUsers());
+    const deleteAllBtn = document.querySelector(".delete-all-users");
+    deleteAllBtn.addEventListener("click", () => this.deleteAllUsers());
 
     const showAllBtn = document.querySelector(".get-all-users");
     showAllBtn.addEventListener("click", () => this.getAllUsers());
@@ -77,9 +76,8 @@ export class User {
   }
 
   deleteAllUsers() {
-    if 
-    (this.users.length === 0) 
-    {alert('Некого удалять')
+    if (this.users.length === 0) {
+      alert("Некого удалять");
       return;
     }
     this.userList.replaceChildren();
@@ -88,13 +86,12 @@ export class User {
   }
 
   async getAllUsers() {
-    localStorage.removeItem("users");
-    const allusers = await this.fetchUsers();
-    if (this.users.length >= allusers.length) {
+    if (this.users.length === this.allUsersCount) {
       alert("Показаны все пользователи");
       return;
+    } else {
+      localStorage.removeItem("users");
+      await this.loadUsers();
     }
-    this.userList.replaceChildren();
-    await this.loadUsers();
   }
 }
