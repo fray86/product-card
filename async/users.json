@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Волан",
+    "surname": "Деморт",
+    "email": "Jayne_Kuhic@sydney.com",
+    "age": 20
+  },
+  {
+    "id": 2,
+    "name": "Гари",
+    "surname": "Шпротер",
+    "email": "Eliseo@gardner.biz",
+    "age": 25
+  },
+  {
+    "id": 3,
+    "name": "Гермиона",
+    "surname": "Уизли",
+    "email": "Lew@alysha.tv",
+    "age": 29
+  }
+]
